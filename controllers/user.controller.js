@@ -9,8 +9,12 @@ class UserController {
     res.json(newPerson.rows[0]);
   }
 
-  async getUsers(req, res) {
-    const users = await db.query("SELECT * FROM person");
+//   async getUsers(req, res) {
+//     const users = await db.query("SELECT * FROM person");
+//     res.json(users.rows);
+//   }
+    async getUsers(req, res) {
+    const users = await db.query("SELECT * FROM person WHERE name LIKE '%国%' OR surname LIKE '%国%';");
     res.json(users.rows);
   }
 
